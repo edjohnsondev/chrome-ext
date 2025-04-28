@@ -1,0 +1,379 @@
+:root {
+  --white: rgb(255, 255, 255);
+  --light-bg: rgb(247, 249, 251);
+  --text: #000000;
+  --autofill-inset: #ecedef;
+  --shadow: rgba(241, 243, 245, 0.3);
+  --divider: rgba(255, 255, 255, 0.2);
+  --blur-level: 10px;
+  --radius-small: 4px;
+  --radius-medium: 8px;
+  --radius-large: 16px;
+  --gap-tiny: 10px;
+  --gap-medium: 30px;
+}
+
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+  min-height: 52px;
+  background: var(--white);
+  backdrop-filter: blur(var(--blur-level));
+  -webkit-backdrop-filter: blur(var(--blur-level));
+  border-radius: var(--radius-large);
+  margin: 0 auto var(--gap-medium);
+  width: 100%;
+  padding: 0 var(--gap-medium);
+}
+.search-wrapper input[type=text] {
+  flex: 1;
+  resize: none;
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  color: var(--text);
+  font-size: 18px;
+  height: 100%;
+  outline: none;
+  display: block;
+}
+.search-wrapper input[type=text]::placeholder {
+  color: var(--text);
+}
+.search-wrapper input[type=text]:-webkit-autofill {
+  background-color: transparent !important;
+  -webkit-box-shadow: 0 0 0 1000px var(--autofill-inset) inset;
+}
+.search-wrapper .search-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-left: var(--gap-tiny);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-wrapper .search-button svg {
+  fill: var(--text);
+  height: 24px;
+  width: 24px;
+}
+
+.transitions-off * {
+  -webkit-transition: none !important;
+  transition: none !important;
+}
+
+.day-time-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+  border-radius: var(--radius-large);
+  background-color: var(--white);
+  margin: 0 0 var(--gap-medium);
+  height: calc(100% - var(--gap-medium));
+}
+@media (max-width: 1399px) {
+  .day-time-wrapper {
+    display: block;
+  }
+}
+.day-time-wrapper #clock-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 0 var(--gap-medium);
+}
+@media (max-width: 1200px) {
+  .day-time-wrapper #clock-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 10px 0;
+  }
+}
+.day-time-wrapper time {
+  position: absolute;
+  top: 150px;
+  left: 0;
+  right: 0;
+  margin: 0;
+  display: block;
+  text-align: center;
+}
+
+.dial-container {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  margin: auto;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  height: 100px;
+  width: 65px;
+  cursor: default;
+}
+@media (max-width: 1399px) {
+  .dial-container {
+    width: 50px;
+  }
+}
+.dial-container.dial-container--hh {
+  width: 120px;
+}
+@media (max-width: 1399px) {
+  .dial-container.dial-container--hh {
+    width: 100px;
+  }
+}
+.dial-container.dial-container--hh span {
+  text-align: center;
+  min-width: 120px;
+}
+@media (max-width: 1399px) {
+  .dial-container.dial-container--hh span {
+    min-width: 100px;
+  }
+}
+.dial-container.dial-container--ss span, .dial-container.dial-container--mm span {
+  text-align: right;
+  padding-right: 2px;
+  border-radius: var(--radius-small) 0 0 0;
+}
+.dial-container.dial-container--ss span:last-child, .dial-container.dial-container--mm span:last-child {
+  border-radius: 0 0 0 var(--radius-small);
+}
+.dial-container.dial-container--s span, .dial-container.dial-container--m span {
+  text-align: left;
+  padding-left: 2px;
+  border-radius: 0 var(--radius-small) 0 0;
+}
+.dial-container.dial-container--s span:last-child, .dial-container.dial-container--m span:last-child {
+  border-radius: 0 0 var(--radius-small) 0;
+}
+.dial-container.margin-left {
+  margin-left: var(--gap-tiny);
+}
+.dial-container.margin-right {
+  margin-right: var(--gap-tiny);
+}
+
+.dial {
+  top: 0;
+  height: 25px;
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  position: absolute;
+  z-index: 3;
+  -webkit-transform-origin: 50px 50px;
+  transform-origin: 50px 50px;
+}
+.dial.dial--static, .dial.dial--next {
+  -webkit-transform: rotateX(0deg) !important;
+  transform: rotateX(0deg) !important;
+}
+.dial.dial--flipped {
+  z-index: 2;
+  -webkit-transform: rotateX(180deg) !important;
+  transform: rotateX(180deg) !important;
+}
+.dial.dial--next {
+  z-index: 2;
+}
+.dial.dial--later {
+  z-index: 1;
+}
+.dial span {
+  width: 65px;
+  height: 50px;
+  display: block;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background: var(--light-bg);
+  color: var(--text);
+  text-align: center;
+  line-height: 100px;
+  font-size: 80px;
+  font-weight: bold;
+  border-radius: var(--radius-small) var(--radius-small) 0 0;
+}
+@media (max-width: 1399px) {
+  .dial span {
+    font-size: 66px;
+    width: 50px;
+  }
+}
+.dial span:first-child {
+  z-index: 2;
+  transform: rotateY(0deg);
+  background-color: var(--light-bg);
+  color: var(--text);
+}
+.dial span:first-child::after {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--divider);
+  content: " ";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.dial span:last-child {
+  transform: rotateY(180deg);
+  transform: rotateX(180deg);
+  border-radius: 0 0 var(--radius-small) var(--radius-small);
+  line-height: 0;
+}
+
+#date-display {
+  background-color: var(--light-bg);
+  max-width: max-content;
+  padding: 17px 20px;
+  border-radius: var(--radius-small);
+  color: var(--text);
+  display: flex;
+  justify-content: flex-start;
+}
+#date-display .clock-right {
+  text-align: left;
+}
+#date-display #day-name {
+  font-size: 24px;
+  height: 24px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 5px;
+}
+#date-display #day-number {
+  height: 66px;
+  font-size: 66px;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+#date-display #month-name {
+  height: 24px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.joke-wrapper {
+  padding: var(--gap-medium);
+  background-color: var(--white);
+  border-radius: var(--radius-large);
+}
+.joke-wrapper #joke-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-medium) 0;
+}
+.joke-wrapper #joke-container #joke,
+.joke-wrapper #joke-container .joke-new {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 52px;
+  background: var(--light-bg);
+  backdrop-filter: blur(var(--blur-level));
+  -webkit-backdrop-filter: blur(var(--blur-level));
+  border-radius: var(--radius-medium);
+  margin: 0 auto;
+  width: 100%;
+  padding: 20px;
+  color: var(--text);
+  font-size: 24px;
+  height: 100%;
+  box-shadow: 0px 2px 5px 1px var(--shadow);
+}
+.joke-wrapper #joke-container .joke-new {
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s all ease-in-out;
+}
+.joke-wrapper #joke-container .joke-new:hover {
+  opacity: 0.75;
+}
+.joke-wrapper #joke-container .joke-new svg {
+  transform: rotate(45deg);
+  max-height: 50px;
+}
+
+.fact-wrapper {
+  width: 100%;
+  height: calc(100% - var(--gap-medium));
+  border-radius: var(--radius-large);
+  background-color: var(--white);
+  text-align: left;
+  margin-bottom: var(--gap-medium);
+}
+@media (max-width: 768px) {
+  .fact-wrapper {
+    display: none;
+  }
+}
+.fact-wrapper .fact-title {
+  background-color: var(--light-bg);
+  padding: 10px 20px;
+  border-radius: var(--radius-large) var(--radius-large) 0 0;
+}
+.fact-wrapper .fact-title h3 {
+  margin: 0;
+  font-weight: 700;
+  text-align: center;
+}
+.fact-wrapper .fact-content {
+  background: var(--white);
+  border-radius: 0 0 var(--radius-large) var(--radius-large);
+  padding: 20px;
+}
+.fact-wrapper .fact-content p {
+  margin: 0;
+  font-size: 18px;
+}
+
+/* General Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Open Sans", sans-serif;
+  background: transparent;
+}
+
+/* Gradient Background */
+#gradient-background {
+  width: 100vw;
+  height: 100%;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-position: 0% 50%;
+  animation: moveGradient 10s ease infinite;
+  padding: 100px 0;
+}
+
+@keyframes moveGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

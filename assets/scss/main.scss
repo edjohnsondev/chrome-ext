@@ -1,0 +1,13 @@
+// assets/scss/main.scss
+
+@use 'base/index' as *;      // brings in both variables & mixins into the root scope
+
+// now pull in each component (they can rely on respond() and vars)
+@use 'components/search';
+@use 'components/clock';
+@use 'components/date';
+@use 'components/joke';
+@use 'components/fact';
+
+// finally output your legacy “base.css” rules (box-sizing, body, etc.)
+@use 'base/base';

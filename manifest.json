@@ -1,0 +1,14 @@
+{
+    "manifest_version": 3,
+    "name": "Becky's Daily Jokes",
+    "version": "1.0.0",
+    "chrome_url_overrides": {
+      "newtab": "index.html"
+    },
+    "permissions": [],
+    "icons": {
+        "16": "assets/icons/icon16.png",
+        "48": "assets/icons/icon48.png",
+        "128": "assets/icons/icon128.png"
+    }
+  }

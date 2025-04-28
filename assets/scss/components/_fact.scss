@@ -1,0 +1,37 @@
+@use '../base/index' as *;
+
+.fact-wrapper {
+    width: 100%;
+    height: calc(100% - var(--gap-medium));
+    border-radius: var(--radius-large);
+    background-color: var(--white);
+    text-align: left;
+    margin-bottom: var(--gap-medium);
+
+    @include respond('md') {
+        display: none;
+    }
+
+    .fact-title {
+        background-color: var(--light-bg);
+        padding: 10px 20px;
+        border-radius: var(--radius-large) var(--radius-large) 0 0;
+
+        h3 {
+            margin: 0;
+            font-weight: 700;
+            text-align: center;
+        }
+    }
+
+    .fact-content {
+        background: var(--white);
+        border-radius: 0 0 var(--radius-large) var(--radius-large);
+        padding: 20px;
+
+        p {
+            margin: 0;
+            font-size: 18px;
+        }
+    }
+}

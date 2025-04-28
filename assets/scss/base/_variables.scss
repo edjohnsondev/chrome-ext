@@ -1,0 +1,23 @@
+// assets/scss/base/_variables.scss
+
+$colors: (
+    "white":          rgba(255,255,255,1),
+    "light-bg":       rgba(247,249,251, 1),
+    "text":           #000000,
+    "autofill-inset": #ecedef,
+    "shadow":         rgba(241, 243, 245, 0.3),
+    "divider":        rgba(255, 255, 255, 0.2)
+) !default;
+
+// Emit CSS variables in :root
+:root {
+    @each $name, $val in $colors {
+        --#{$name}: #{$val};
+    }
+    --blur-level: 10px;
+    --radius-small: 4px;
+    --radius-medium: 8px;
+    --radius-large: 16px;
+    --gap-tiny: 10px;
+    --gap-medium: 30px;
+}

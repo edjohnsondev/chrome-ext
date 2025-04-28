@@ -1,0 +1,17 @@
+@use "sass:map";
+
+@mixin respond($bp) {
+  $sizes: (
+    sm: 576px,
+    md: 768px,
+    lg: 992px,
+    xl: 1200px,
+    xxl: 1399px
+  );
+  $point: map.get($sizes, $bp);
+  @if $point {
+    @media (max-width: $point) {
+      @content;
+    }
+  }
+}

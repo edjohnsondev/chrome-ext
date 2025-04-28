@@ -1,0 +1,195 @@
+@use '../base/index' as *;
+
+.transitions-off * {
+    -webkit-transition: none !important;
+    transition: none !important;
+}
+
+.day-time-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    border-radius: var(--radius-large);
+    background-color: var(--white);
+    margin: 0 0 var(--gap-medium);
+    height: calc(100% - var(--gap-medium));
+
+    @include respond('xxl') {
+        display: block;
+    }
+
+    #clock-wrapper {
+        display: flex;
+        justify-content: center;
+        gap: 0 var(--gap-medium);
+
+        @include respond('xl') {
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 10px 0;
+        }
+    }
+
+    time {
+        position: absolute;
+        top: 150px;
+        left: 0;
+        right: 0;
+        margin: 0;
+        display: block;
+        text-align: center;
+    }
+}
+
+.dial-container {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    margin: auto;
+    -webkit-perspective: 1000;
+    perspective: 1000;
+    height: 100px;
+    width: 65px;
+    cursor: default;
+
+    @include respond('xxl') {
+        width: 50px;
+    }
+
+    &.dial-container--hh {
+        width: 120px;
+
+        @include respond('xxl') {
+            width: 100px;
+        }
+
+        span {
+            text-align: center;
+            min-width: 120px;
+
+            @include respond('xxl') {
+                min-width: 100px;
+            }
+        }
+    }
+
+    &.dial-container--ss,
+    &.dial-container--mm {
+        span {
+            text-align: right;
+            padding-right: 2px;
+            border-radius: var(--radius-small) 0 0 0;
+
+            &:last-child {
+                border-radius: 0 0 0 var(--radius-small);
+            }
+        }
+    }
+
+    &.dial-container--s,
+    &.dial-container--m  {
+        span {
+            text-align: left;
+            padding-left: 2px;
+            border-radius: 0 var(--radius-small) 0 0;
+
+            &:last-child {
+                border-radius: 0 0 var(--radius-small) 0;
+            }
+        }
+    }
+
+    &.margin-left {
+        margin-left: var(--gap-tiny);
+    }
+    
+    &.margin-right {
+        margin-right: var(--gap-tiny);
+    }
+}
+
+
+.dial {
+    top: 0;
+    height: 25px;
+    -webkit-transition: all 0.6s;
+    transition: all 0.6s;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    position: absolute;
+    z-index: 3;
+    -webkit-transform-origin: 50px 50px;
+    transform-origin: 50px 50px;
+
+    &.dial--static,
+    &.dial--next {
+        -webkit-transform: rotateX(0deg) !important;
+        transform: rotateX(0deg) !important;
+    }
+
+    &.dial--flipped {
+        z-index: 2;
+        -webkit-transform: rotateX(180deg) !important;
+        transform: rotateX(180deg) !important;
+    }
+
+    &.dial--next {
+        z-index: 2;
+    }
+
+    &.dial--later {
+        z-index: 1;
+    }
+
+    span {
+        width: 65px;
+        height: 50px;
+        display: block;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        background: var(--light-bg);
+        color: var(--text);
+        text-align: center;
+        line-height: 100px;
+        font-size: 80px;
+        font-weight: bold;
+        border-radius: var(--radius-small) var(--radius-small) 0 0;
+
+        @include respond('xxl') {
+            font-size: 66px;
+            width: 50px;
+        }
+
+        &:first-child {
+            z-index: 2;
+            transform: rotateY(0deg);
+            background-color: var(--light-bg);
+            color: var(--text);
+
+            &::after {
+                display: block;
+                width: 100%;
+                height: 1px;
+                background: var(--divider);
+                content: ' ';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+            }
+        }
+
+        &:last-child {
+            transform: rotateY(180deg);
+            transform: rotateX(180deg);
+            border-radius: 0 0 var(--radius-small) var(--radius-small);
+            line-height: 0;
+        }
+    }
+}

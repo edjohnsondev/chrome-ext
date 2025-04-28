@@ -1,0 +1,45 @@
+.joke-wrapper {
+    padding: var(--gap-medium);
+    background-color: var(--white);
+    border-radius: var(--radius-large);
+
+    #joke-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--gap-medium) 0;
+    
+        #joke,
+        .joke-new {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            min-height: 52px;
+            background: var(--light-bg);
+            backdrop-filter: blur(var(--blur-level));
+            -webkit-backdrop-filter: blur(var(--blur-level));
+            border-radius: var(--radius-medium);
+            margin: 0 auto;
+            width: 100%;
+            padding: 20px;
+            color: var(--text);
+            font-size: 24px;
+            height: 100%;
+            box-shadow: 0px 2px 5px 1px var(--shadow);
+        }
+    
+        .joke-new {
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s all ease-in-out;
+    
+            &:hover {
+                opacity: 0.75;
+            }
+    
+            svg {
+                transform: rotate(45deg);
+                max-height: 50px;
+            }
+        }
+    }
+}

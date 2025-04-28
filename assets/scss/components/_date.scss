@@ -1,0 +1,37 @@
+#date-display {
+    background-color: var(--light-bg);
+    max-width: max-content;
+    padding: 17px 20px;
+    border-radius: var(--radius-small);
+    color: var(--text);
+    display: flex;
+    justify-content: flex-start;
+
+    .clock-right {
+        text-align: left;
+    }
+    
+    #day-name {
+        font-size: 24px;
+        height: 24px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-bottom: 5px;
+    }
+    
+    #day-number {
+        height: 66px;
+        font-size: 66px;
+        font-weight: 900;
+        display: flex;
+        align-items: center;
+        margin-right: 10px;
+    }
+    
+    #month-name {
+        height: 24px;
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: 2px;
+    }
+}
