@@ -1,5 +1,15 @@
 # Becky's daily jokes!
 
+## Installing Locally
+
+1. **Download the ZIP**  
+    - Click the green **Code** button → **Download ZIP**  
+    - Unzip the archive to a folder on your machine  
+2. Open Chrome and navigate to `chrome://extensions/`  
+3. Enable **Developer mode** (toggle in the top-right)  
+4. Click **Load unpacked**, then select the folder you just unzipped  
+5. Open a new tab → your extension will render the clock, date, fact & joke  
+
 ## Extension Structure
 
 - **icons/**  
@@ -45,13 +55,6 @@
     - Fetches random fact from `uselessfacts.jsph.pl`  
     - Fetches dad joke from `icanhazdadjoke.com`  
     - Applies a random pastel gradient background  
-
-## Installing Locally
-
-1. Open Chrome → **chrome://extensions/**  
-2. Enable **Developer mode** (toggle top-right).  
-3. Click **Load unpacked**, select your project folder.  
-4. Open a new tab → your extension will render the clock, date, fact & joke.
 
 ## Build & Development
 
