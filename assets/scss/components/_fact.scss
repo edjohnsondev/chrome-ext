@@ -8,10 +8,6 @@
     text-align: left;
     margin-bottom: var(--gap-medium);
 
-    @include respond('md') {
-        display: none;
-    }
-
     .fact-title {
         background-color: var(--light-bg);
         padding: 10px 20px;

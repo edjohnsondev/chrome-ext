@@ -335,11 +335,6 @@
   text-align: left;
   margin-bottom: var(--gap-medium);
 }
-@media (max-width: 768px) {
-  .fact-wrapper {
-    display: none;
-  }
-}
 .fact-wrapper .fact-title {
   background-color: var(--light-bg);
   padding: 10px 20px;
