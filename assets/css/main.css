@@ -86,6 +86,7 @@
 .day-time-wrapper #clock-wrapper {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 0 var(--gap-medium);
 }
 @media (max-width: 1200px) {
@@ -271,8 +272,6 @@
 }
 
 .joke-wrapper {
-  padding: var(--gap-medium);
-  background-color: var(--white);
   border-radius: var(--radius-large);
 }
 .joke-wrapper #joke-container {
@@ -280,35 +279,52 @@
   flex-wrap: wrap;
   gap: var(--gap-medium) 0;
 }
-.joke-wrapper #joke-container #joke,
-.joke-wrapper #joke-container .joke-new {
-  display: flex;
-  flex-direction: column;
+.joke-wrapper #joke-container .panel {
   position: relative;
-  min-height: 52px;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
   background: var(--light-bg);
   backdrop-filter: blur(var(--blur-level));
   -webkit-backdrop-filter: blur(var(--blur-level));
   border-radius: var(--radius-medium);
-  margin: 0 auto;
-  width: 100%;
-  padding: 20px;
-  color: var(--text);
-  font-size: 24px;
-  height: 100%;
   box-shadow: 0px 2px 5px 1px var(--shadow);
+  aspect-ratio: 1/1; /* SQUARE panels */
 }
-.joke-wrapper #joke-container .joke-new {
+.joke-wrapper #joke-container #joke {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  cursor: pointer;
-  transition: 0.3s all ease-in-out;
+  text-align: left;
+  padding: 20px;
+  font-size: 24px;
+  color: var(--text);
+  height: 100%;
+  width: 100%;
+  word-break: break-word;
 }
-.joke-wrapper #joke-container .joke-new:hover {
-  opacity: 0.75;
+.joke-wrapper #joke-container .dog-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.joke-wrapper #joke-container .joke-new svg {
-  transform: rotate(45deg);
-  max-height: 50px;
+.joke-wrapper #joke-container .dog-panel img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-medium);
+}
+.joke-wrapper #joke-container .iframe-panel iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: var(--radius-medium);
 }
 
 .fact-wrapper {
